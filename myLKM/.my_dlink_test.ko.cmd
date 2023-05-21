@@ -1,0 +1,1 @@
+cmd_/home/kk1731/git/debug_linux/myLKM/my_dlink_test.ko := ld -r -m elf_x86_64  --build-id=sha1  -T scripts/module.lds -o /home/kk1731/git/debug_linux/myLKM/my_dlink_test.ko /home/kk1731/git/debug_linux/myLKM/my_dlink_test.o /home/kk1731/git/debug_linux/myLKM/my_dlink_test.mod.o;  true

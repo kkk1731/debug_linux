@@ -1,0 +1,1 @@
+cmd_/home/kk1731/git/debug_linux/myLKM/Module.symvers := sed 's/ko$$/o/' /home/kk1731/git/debug_linux/myLKM/modules.order | scripts/mod/modpost -m -a   -o /home/kk1731/git/debug_linux/myLKM/Module.symvers -e -i Module.symvers   -T -
