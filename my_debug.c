@@ -1,5 +1,21 @@
 #include "my_debug.h"
 
+struct task_struct *search_task_struct_by_pid(int pid)
+{
+	struct task_struct *tsk	= NULL;
+	struct pid *pid_s	= NULL;
+
+	pid_s = find_get_pid(pid);
+	if (!pid_s)
+		return NULL;
+
+	tsk = get_pid_task(pid_s, PIDTYPE_PID);
+	if (!tsk)
+		return NULL;
+
+	return tsk;
+}
+
 SYSCALL_DEFINE0(show_vma){
 	struct mm_struct *mm;
 	struct vm_area_struct *first_vma, *vma;
@@ -82,7 +98,7 @@ SYSCALL_DEFINE1(out_ulong, unsigned long, addr){
 		printk("task_struct = %lx",(unsigned long)current);
 		return 0;
 	}
-	printk("%ld",addr);
+	printk("out_ulong, %ld",addr);
 	return 0;
 }
 

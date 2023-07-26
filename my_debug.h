@@ -32,21 +32,7 @@ enum my_debug_results{
 	MY_DEBUG_NO_PTE,
 };
 
-struct task_struct *search_task_struct_by_pid(int pid)
-{
-	struct task_struct *tsk	= NULL;
-	struct pid *pid_s	= NULL;
-
-	pid_s = find_get_pid(pid);
-	if (!pid_s)
-		return NULL;
-
-	tsk = get_pid_task(pid_s, PIDTYPE_PID);
-	if (!tsk)
-		return NULL;
-
-	return tsk;
-}
+struct task_struct *search_task_struct_by_pid(int pid);
 
 #endif
 #define MY_DEBUG_addr(debug_types)  

@@ -9,7 +9,7 @@ echo "choose menu:"
 read MENU
 
 if [ $MENU -eq 1 ];then
-	echo "input function number(I have only implemented 1):"
+	echo "input function number:"
 	read FUNC
 	make -s -C myLKM/ dlink_test FUNC=$FUNC
 elif [ $MENU -eq 2 ];then
