@@ -27,5 +27,20 @@ Loadable Kernel Module(LKM)を使うことでそれを実現しています。�
 するとシステムコール "dlink_test"で呼び出される関数の内容が変わっているはず。
 
 # 時間計測
+## C
+clock()：clock数を計測するが、注意点としてsleepなどによってプログラムが実行されていない間の時間は含まれない。
 
-clock()：clock数計測するが、注意点として Hugepage による高速化が反映されなかった。
+## python3
+以下の関数を利用するためには "import time"が必要
+
+- time.perf_counter()：CPUの機能を使用して高精度に時間を計測する。sleep等の時間も含まれる。
+
+使用例：
+``` python3
+start = time.perf_counter()
+#処理
+end = time.perf_counter()
+print(end-start)
+```
+
+- time.process_time()：現在のプロセスのシステムCPU時間とユーザーCPU時間の合計値を（小数秒単位で）返します。スリープ中の経過時間は含まれません。注意点として、sleep等の他にも、redisなどの client-server 型プログラムのserverからの返答を待つ時間も含まれないのでserverが高速化されていても反映されない。使い方はtime.perf_counter()と同じ。
